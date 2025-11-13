@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import json
 import re
+from flask_cors import CORS 
 
 # Load environment variables
 load_dotenv()
@@ -20,6 +21,7 @@ genai.configure(api_key=API_KEY)
 MODEL_NAME = "models/gemini-2.5-flash"
 
 app = Flask(__name__)
+CORS(app)
 
 def get_job_recommendations(skills):
     prompt = f"""
