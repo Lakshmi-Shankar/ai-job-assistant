@@ -65,7 +65,9 @@ def recommend():
     skills = data["skills"]
 
     if not isinstance(skills, list) or not skills:
-        return jsonify({"error": "'skills' must be a non-empty list"}), 400
+        return jsonify(
+            {"content": "Please provide a non-empty list of skills."}
+        ), 200
 
     recommendations = get_job_recommendations(skills)
     return jsonify(recommendations)
