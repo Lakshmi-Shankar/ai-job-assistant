@@ -58,16 +58,7 @@ def get_job_recommendations(skills):
 @app.route("/recommend", methods=["POST"])
 def recommend():
     data = request.get_json()
-
-    if not data or "skills" not in data:
-        return jsonify({"error": "Missing 'skills' in request body"}), 400
-
     skills = data["skills"]
-
-    if not isinstance(skills, list) or not skills:
-        return jsonify(
-            {"content": "Please provide a non-empty list of skills."}
-        ), 200
 
     recommendations = get_job_recommendations(skills)
     return jsonify(recommendations)
